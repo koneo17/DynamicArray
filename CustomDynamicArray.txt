@@ -1,0 +1,49 @@
+class Program
+{
+	public class DynamicArray
+        {
+            object[] data;
+            int length = 16;
+            int size;
+
+            public DynamicArray()
+            {
+                data = new object[length];
+                size = 0;
+            }
+            public void AddToArray(object x)
+            {
+                if (size < length)
+                    data[size] = x;
+                else
+                {
+                    length = length * 2;
+                    object[] tempData = new object[length];
+                    for(int i = 0; i < data.Length; i++)
+                    {
+                        tempData[i] = data[i];
+                    }
+                    data = tempData;
+                    data[size] = x;
+                }
+                size++;
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            int[]  arr = { 5, 3, 7, 1, 4, 6, 8 };
+
+            DynamicArray dynamicArray = new DynamicArray();
+
+            dynamicArray.AddToArray(5);
+            dynamicArray.AddToArray(34);
+            dynamicArray.AddToArray(4);
+            dynamicArray.AddToArray(2);
+            dynamicArray.AddToArray(8);
+            dynamicArray.AddToArray(0);
+            dynamicArray.AddToArray(3);
+            dynamicArray.AddToArray(1);
+		}
+	}
+}
